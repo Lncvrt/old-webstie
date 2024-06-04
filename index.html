@@ -45,13 +45,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var currentHash = window.location.hash;
-            
+
             if (!currentHash || (currentHash !== '#about' && currentHash !== '#projects' && currentHash !== '#contact')) {
                 window.location.hash = '#about';
             }
 
             window.addEventListener('hashchange', setActiveLink);
             setActiveLink();
+
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            navLinks.forEach(function(link) {
+                link.addEventListener('mouseenter', function() {
+                    removeActiveLink();
+                });
+                link.addEventListener('mouseleave', function() {
+                    setActiveLink();
+                });
+            });
         });
 
         function setActiveLink() {
@@ -64,6 +75,13 @@
                 } else {
                     link.classList.remove('active');
                 }
+            });
+        }
+
+        function removeActiveLink() {
+            var navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(function(link) {
+                link.classList.remove('active');
             });
         }
     </script>
