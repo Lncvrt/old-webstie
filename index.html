@@ -41,7 +41,7 @@
             </section>
         </div>
     </main>
-    <!-- <script src="/assets/main.js"></script> -->
+    <!-- <script src="/assets/main.js?v=1"></script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var currentHash = window.location.hash;
@@ -49,7 +49,23 @@
             if (!currentHash || (currentHash !== '#about' && currentHash !== '#projects' && currentHash !== '#contact')) {
                 window.location.hash = '#about';
             }
+
+            window.addEventListener('hashchange', setActiveLink);
+            setActiveLink();
         });
-    </script>       
+
+        function setActiveLink() {
+            var currentHash = window.location.hash;
+            var navLinks = document.querySelectorAll('nav ul li a');
+
+            navLinks.forEach(function(link) {
+                if (link.getAttribute('href') === currentHash) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
