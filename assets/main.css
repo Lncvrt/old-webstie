@@ -41,7 +41,7 @@ main {
     transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
     font-family: 'Montserrat', sans-serif;
     width: 600px;
-    height: 280px;
+    height: auto;
 }
 
 .pod:hover {
@@ -92,6 +92,65 @@ section:target {
     animation: fadeIn 0.5s ease;
 }
 
+.projects-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.project-pod {
+    background: #444;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(140, 140, 140, 0.5);
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-pod:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+.project-pod h2 {
+    margin-bottom: 0.5rem;
+    color: #eee;
+}
+
+.project-pod p {
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.project-pod a {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.notification {
+    position: fixed;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #444;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.notification.show {
+    bottom: 20px;
+    opacity: 1;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -104,9 +163,12 @@ section:target {
 @media only screen and (max-width: 600px) {
     .pod {
         width: 85%;
-        height: 400px;
     }
-    nav ul li a {
-        padding: 0.5rem 0.4rem;
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .project-pod {
+        width: 80%;
     }
 }

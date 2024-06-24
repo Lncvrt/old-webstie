@@ -33,15 +33,30 @@
             </section>
             <section id="projects">
                 <h2>My Projects</h2>
-                <p>No public ones yet, but they will come soon!</p>
+                <div class="projects-container">
+                    <div class="project-pod" onclick="copyToClipboard('lncvrtboxes.minehut.gg')">
+                        <h2>LncvrtBoxes</h2>
+                        <p>A Minehut box server.</p>
+                    </div>
+                    <div class="project-pod" onclick="copyToClipboard('lncvrtboxffa.minehut.gg')">
+                        <h2>LncvrtBoxFFA</h2>
+                        <p>My most successful Minehut server/project.</p>
+                    </div>
+                    <div class="project-pod" onclick="openPage('https\:\/\/github.com/Lncvrt/AlwaysNightVision', true)">
+                        <h2>AlwaysNightVision</h2>
+                        <p>A really simple plugin to give a player night vision on join with <strong>1.8 - 1.21</strong> support</p>
+                    </a>
+                </div>
             </section>
             <section id="contact">
                 <h2>Contact</h2>
-                <p>Contact information will be added here soon.</p>
+                <p>You can contact me via Discord: <strong>@lncvrt</strong></p>
+                <p>You can contact me via Email: <strong><a href="mailto:lncvrtreal@gmail.com" style="color: #ccc; text-decoration: underline;">lncvrtreal@gmail.com</a></strong></p>
             </section>
         </div>
+        <div class="notification" id="notification">IP copied to clipboard</div>
     </main>
-    <!-- <script src="/assets/main.js?v=1"></script> -->
+    <script src="/assets/main.js?v=1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var currentHash = window.location.hash;
@@ -83,6 +98,16 @@
             navLinks.forEach(function(link) {
                 link.classList.remove('active');
             });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                var notification = document.getElementById('notification');
+                notification.classList.add('show');
+                setTimeout(function() {
+                    notification.classList.remove('show');
+                }, 2000);
+            })
         }
     </script>
 </body>
